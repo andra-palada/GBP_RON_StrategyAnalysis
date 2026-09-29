@@ -90,7 +90,7 @@ Features:
 
 ```bash
 git clone https://github.com/andra-palada/GBP_RON_StrategyAnalysis.git
-cd <repo-name>
+cd cd GBP_RON_StrategyAnalysis
 
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
