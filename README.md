@@ -71,7 +71,11 @@ For every day, the forward 10-day return (close *t* to close *t+10*) is averaged
 
 An interactive Streamlit app that replays the backtest through history one trading day at a time.
 
-*Note:* Please note that on many consecutive runs of the project, Yahoo Finance throws an exception when attempting to read the data, so the data frame is null and the dashboard has nothing to load (merely displays the error messages). In this case, please wait before re-attempting, and clear the cache or restart Streamlit. 
+*Note:* Repeated runs of the project may cause Yahoo Finance to
+throw an exception when attempting to retrieve the data. In this case,
+the DataFrame may be empty and the dashboard will be unable to load.
+If this occurs, wait before trying again and clear the cache or restart
+Streamlit.
 
 Features:
 - Adjustable z-score lookback (5–60 trading days), starting capital and animation speed
