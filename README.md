@@ -8,7 +8,7 @@ The project also includes an interactive Streamlit dashboard that replays the ba
 ![Dashboard_Today](dashboard_header.png)
 ![Dashboard_Today](dashboard_2023-2026.png)
 
-### *Note*: Please refer to the Results pdf document for a detailed explanation of the project and analysis of the results of the current simulation, and using modified parameters via the dashboard.
+#### *Note*: Please refer to the Results pdf document for a detailed explanation of the project's configuration and for a comprehensive analysis of the simulation results with current and modified parameters via the dashboard.
 
 ## Downloading the Project
 
