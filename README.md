@@ -10,22 +10,41 @@ The project also includes an interactive Streamlit dashboard that replays the ba
 
 ### *Note*: Please refer to the Results pdf document for a detailed explanation of the project and analysis of the results of the current simulation, and using modified parameters via the dashboard.
 
-#### AI Usage Note 
-During this project, I used LLMs (ChatGPT (GPT-5.6 Luna), Claude (Sonnet 5 Extra), Gemini (3.5 Flash)) for:
-- *LEARNING*: 
-    - researching the appropriate setup for the simulation (how to source data, difference between a short and flat position,  difference in volatility and bid-ask spreads between RON and GBP)
-    - understanding all the factors used to evaluate a strategy aside from the return (Sharpe ratio vs Information ratio, time in market),
-    - understanding the limitations brought by some of my assumptions (e.g. constant transaction fee vs bid/ask spread, high number of transactions cutting down returns of strategies)
-- *CODING*: 
-    - creating the Streamlit dashboard
-    - making parts of Python code more efficient and compressed (calculate days elapsed, vectorized calculation of strategy returns)
-- *STYLING*: 
-    - comment and output formatting 
-    - ensuring code is easy to read and consistent across sections
-    - formatting README and Latex documents.
+## Downloading the Project
 
-See the Challenges section in the Report for the obstacles encountered while using AI.
+**Requirements:** Python 3 and an internet connection (data is downloaded from Yahoo Finance on first run).
 
+```bash
+git clone https://github.com/andra-palada/GBP_RON_StrategyAnalysis.git
+cd cd GBP_RON_StrategyAnalysis
+
+python3 -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install -r requirements_dashboard.txt
+```
+
+Run the analysis (prints Part 1 and Part 2 results):
+
+```bash
+python GBP_RON_Project.py
+```
+
+Run the dashboard:
+
+```bash
+streamlit run gbp_ron_dashboard.py
+```
+
+### Directory structure
+
+```
+├── GBP_RON_Project.py           # Signal test + portfolio simulation
+├── gbp_ron_dashboard.py         # Streamlit dashboard
+├── requirements_dashboard.txt   # Python dependencies
+├── README.md
+├── dashboard_header.png         # photo for README
+└── dashboard_2023-2026.png      # photo for README
+```
 
 ## Hypotheses
 
@@ -65,7 +84,7 @@ For every day, the forward 10-day return (close *t* to close *t+10*) is averaged
 - Each strategy starts with **10,000 RON**.
 - **Timing:** the z-score at the close of day *t-1* sets the position held on day *t*, which earns the return from close *t-1* to close *t*.
 - **Daily strategy return** = `(1 + GBP/RON return)*(1 + GBP_Interest) - 1` if position holds GBP (position exposed to FX fluctuations and accumulates interest) ; `(1 + RON_Interest)` if position holds RON (only accumulates interest); exchange fees also applied on days when trade occurs; portfolio value compounds these returns. 
-- **Metrics reported:** *final value*, *total return*, annualised *Sharpe* ratio and *Information* ratio (both compared to Buy&Hold benchmark, see [Notes](#notes) for explanation of benchmark), number of *days holding GBP*, and number of *entries and exits*.
+- **Metrics reported:** *final value*, *total return*, annualised *Sharpe* ratio and *Information* ratio (both compared to Buy&Hold benchmark, see the Notes section in the Report for an explanation of the benchmark), number of *days holding GBP*, and number of *entries and exits*.
 
 ## Dashboard
 
@@ -84,38 +103,18 @@ Features:
 - Live portfolio values and % returns for Buy & Hold, Momentum and Trend Reversal (mean reversion)
 - Single Plotly chart with a marker for the simulated "today"
 
-## Downloading the Project
+#### AI Usage Note 
+During this project, I used LLMs (ChatGPT (GPT-5.6 Luna), Claude (Sonnet 5 Extra), Gemini (3.5 Flash)) for:
+- *LEARNING*: 
+    - researching the appropriate setup for the simulation (how to source data, difference between a short and flat position,  difference in volatility and bid-ask spreads between RON and GBP)
+    - understanding all the factors used to evaluate a strategy aside from the return (Sharpe ratio vs Information ratio, time in market),
+    - understanding the limitations brought by some of my assumptions (e.g. constant transaction fee vs bid/ask spread, high number of transactions cutting down returns of strategies)
+- *CODING*: 
+    - creating the Streamlit dashboard
+    - making parts of Python code more efficient and compressed (calculate days elapsed, vectorized calculation of strategy returns)
+- *STYLING*: 
+    - comment and output formatting 
+    - ensuring code is easy to read and consistent across sections
+    - formatting README and Latex documents.
 
-**Requirements:** Python 3 and an internet connection (data is downloaded from Yahoo Finance on first run).
-
-```bash
-git clone https://github.com/andra-palada/GBP_RON_StrategyAnalysis.git
-cd cd GBP_RON_StrategyAnalysis
-
-python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements_dashboard.txt
-```
-
-Run the analysis (prints Part 1 and Part 2 results):
-
-```bash
-python GBP_RON_Project.py
-```
-
-Run the dashboard:
-
-```bash
-streamlit run gbp_ron_dashboard.py
-```
-
-### Directory structure
-
-```
-├── GBP_RON_Project.py           # Signal test + portfolio simulation
-├── gbp_ron_dashboard.py         # Streamlit dashboard
-├── requirements_dashboard.txt   # Python dependencies
-├── README.md
-├── dashboard_header.png         # photo for README
-└── dashboard_2023-2026.png      # photo for README
-```
+See the Report for the challenges that arose while using AI, as well as for an analysis of the project configuration and results.
