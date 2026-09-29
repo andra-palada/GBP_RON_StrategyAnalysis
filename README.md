@@ -16,7 +16,7 @@ The project also includes an interactive Streamlit dashboard that replays the ba
 
 ```bash
 git clone https://github.com/andra-palada/GBP_RON_StrategyAnalysis.git
-cd cd GBP_RON_StrategyAnalysis
+cd GBP_RON_StrategyAnalysis
 
 python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
